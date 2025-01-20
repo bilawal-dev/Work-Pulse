@@ -36,7 +36,7 @@ export default function About() {
             </div>
             <div className="relative flex justify-center">
               <span className="px-3 bg-gradient-to-br from-teal-50 to-blue-50 text-lg font-medium text-gray-900">
-                Trusted by industry leaders
+                Empowering workplaces globally
               </span>
             </div>
           </motion.div>
@@ -48,16 +48,13 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <div className="lg:grid lg:grid-cols-2 lg:gap-24 lg:items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-              <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">Our Story</h2>
+              <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">About Us</h2>
               <p className="mt-6 max-w-3xl text-xl text-gray-500">
-                WorkPulse was born from a simple idea: what if we could use the power of AI to make workplaces healthier
-                and happier? Founded in 2020 by a team of health professionals, data scientists, and HR experts, we set
-                out to revolutionize workplace wellness.
-              </p>
-              <p className="mt-6 max-w-3xl text-xl text-gray-500">
-                Today, we're proud to serve thousands of organizations worldwide, helping them create cultures of
-                well-being and productivity. Our journey is just beginning, and we're excited to continue innovating and
-                improving workplace wellness for years to come.
+                WorkPulse is an AI-driven platform designed to enhance workplace wellness and productivity. 
+                <br /><br />
+                Our SaaS solution provides organizations with real-time insights into employee well-being, enabling them to foster a culture of 
+                health, engagement, and performance. With our intuitive tools and analytics, companies can proactively address 
+                challenges and unlock the full potential of their workforce.
               </p>
             </motion.div>
             <motion.div
@@ -68,8 +65,8 @@ export default function About() {
             >
               <div className="pl-4 -ml-4 relative lg:pl-12 lg:-ml-12">
                 <Image
-                  src="/placeholder.svg"
-                  alt="Our Story"
+                  src="/AboutImage.png"
+                  alt="About Us"
                   width={550}
                   height={550}
                   className="rounded-xl shadow-xl ring-1 ring-black ring-opacity-5"
@@ -96,22 +93,22 @@ export default function About() {
           </motion.div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <ValueCard
-              icon={<Activity className="h-8 w-8 text-primary" />}
+              icon={<Activity className="h-8 w-8 text-white" />}
               title="Innovation"
               description="We constantly push the boundaries of what's possible in workplace wellness."
             />
             <ValueCard
-              icon={<Users className="h-8 w-8 text-primary" />}
+              icon={<Users className="h-8 w-8 text-white" />}
               title="Empathy"
               description="We put people first, understanding and addressing their unique needs."
             />
             <ValueCard
-              icon={<TrendingUp className="h-8 w-8 text-primary" />}
+              icon={<TrendingUp className="h-8 w-8 text-white" />}
               title="Growth"
               description="We believe in continuous improvement, both for ourselves and our clients."
             />
             <ValueCard
-              icon={<Award className="h-8 w-8 text-primary" />}
+              icon={<Award className="h-8 w-8 text-white" />}
               title="Excellence"
               description="We strive for the highest quality in everything we do."
             />
@@ -168,4 +165,3 @@ const ValueCard = ({ icon, title, description }: any) => (
     <p className="text-gray-600">{description}</p>
   </motion.div>
 )
-

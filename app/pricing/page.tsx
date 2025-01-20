@@ -70,10 +70,10 @@ export default function Pricing() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-12 text-center"
+            className="text-4xl md:text-5xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-primary"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -161,9 +161,8 @@ const PricingCard = ({ title, price, description, features, ctaText, ctaLink, hi
     </ul>
     <Link
       href={ctaLink}
-      className={`block w-full text-center py-2 px-4 rounded-full font-semibold ${
-        highlighted ? "bg-primary text-white hover:bg-primary/90" : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-      } transition-colors duration-300`}
+      className={`block w-full text-center py-2 px-4 rounded-full font-semibold ${highlighted ? "bg-primary text-white hover:bg-primary/90" : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+        } transition-colors duration-300`}
     >
       {ctaText}
     </Link>
@@ -172,13 +171,13 @@ const PricingCard = ({ title, price, description, features, ctaText, ctaLink, hi
 
 const FAQItem = ({ question, answer }: any) => (
   <motion.div
-    className="bg-white rounded-lg p-6 shadow-lg"
+    className="bg-gradient-to-br from-white to-gray-100 rounded-lg p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300"
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
+    whileHover={{ scale: 1.05 }}
     transition={{ duration: 0.5 }}
   >
-    <h4 className="text-xl font-semibold mb-2">{question}</h4>
-    <p className="text-gray-600">{answer}</p>
+    <h4 className="text-xl font-semibold mb-2 text-primary">{question}</h4>
+    <p className="text-gray-700 leading-relaxed">{answer}</p>
   </motion.div>
 )
-

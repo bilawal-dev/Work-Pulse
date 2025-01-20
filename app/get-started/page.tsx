@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import toast, { Toaster } from "react-hot-toast"
 
 export default function GetStarted() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ export default function GetStarted() {
     companyName: "",
     employeeCount: "",
   })
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -19,12 +21,27 @@ export default function GetStarted() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically handle the registration logic
-    console.log("Registration attempted with:", formData)
+    setLoading(true)
+
+    // Simulate registration logic
+    setTimeout(() => {
+      toast.error("Failed To Create Account");
+      setLoading(false)
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        companyName: "",
+        employeeCount: "",
+      })
+    }, 2000)  // Simulating a delay for registration
   }
 
   return (
     <div className="min-h-screen pt-20 pb-10 bg-gradient-to-br from-teal-50 to-blue-50">
+
+      <Toaster />
+
       <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="px-6 py-8">
           <h2 className="text-3xl font-bold text-center mb-6">Create Your Account</h2>
@@ -43,7 +60,7 @@ export default function GetStarted() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50"
+                className="mt-1 block w-full rounded-md border-gray-200 outline-none border-b"
               />
             </div>
             <div>
@@ -57,7 +74,7 @@ export default function GetStarted() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50"
+                className="mt-1 block w-full rounded-md border-gray-200 outline-none border-b"
               />
             </div>
             <div>
@@ -71,7 +88,7 @@ export default function GetStarted() {
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50"
+                className="mt-1 block w-full rounded-md border-gray-200 outline-none border-b"
               />
             </div>
             <div>
@@ -85,7 +102,7 @@ export default function GetStarted() {
                 value={formData.companyName}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50"
+                className="mt-1 block w-full rounded-md border-gray-200 outline-none border-b"
               />
             </div>
             <div>
@@ -98,7 +115,7 @@ export default function GetStarted() {
                 value={formData.employeeCount}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50"
+                className="mt-1 block w-full rounded-md border-gray-200 outline-none border-b"
               >
                 <option value="">Select...</option>
                 <option value="1-10">1-10</option>
@@ -111,9 +128,14 @@ export default function GetStarted() {
             <div>
               <button
                 type="submit"
-                className="w-full bg-primary text-white px-4 py-2 rounded-md font-semibold hover:bg-primary/90 transition-colors duration-300"
+                className="w-full bg-primary text-white px-4 py-2 rounded-md font-semibold hover:bg-primary/90 transition-colors duration-300 flex justify-center items-center"
+                disabled={loading}
               >
-                Create Account
+                {loading ? (
+                  <div className="animate-spin h-5 w-5 border-t-2 border-white border-solid rounded-full"></div>
+                ) : (
+                  "Create Account"
+                )}
               </button>
             </div>
           </form>
@@ -130,4 +152,3 @@ export default function GetStarted() {
     </div>
   )
 }
-

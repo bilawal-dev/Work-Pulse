@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`fixed w-full z-50 transition-all duration-300 ease-in-out ${
+      className={`fixed top-0 overflow-hidden w-full z-50 transition-all duration-300 ease-in-out ${
         isScrolled ? "bg-white bg-opacity-90 backdrop-blur-sm shadow-md" : "bg-transparent"
       }`}
       initial={{ y: -100 }}
@@ -45,6 +45,7 @@ const Header = () => {
             <span className="ml-2 text-xl font-semibold text-gradient">WorkPulse</span>
           </Link>
           <nav className="hidden md:flex space-x-8">
+            <NavLink href="/">Home</NavLink>
             <NavLink href="/about">About</NavLink>
             <NavLink href="/pricing">Pricing</NavLink>
             <NavLink href="/contact">Contact</NavLink>
@@ -53,7 +54,7 @@ const Header = () => {
             <NavLink href="/login">Login</NavLink>
             <Link
               href="/get-started"
-              className="bg-primary text-white px-4 py-2 rounded-full hover:bg-primary/90 transition-colors duration-300 transform hover:scale-105"
+              className="bg-primary text-white px-4 py-2 rounded-full hover:bg-primary/90 transition-colors duration-300 transform"
             >
               Get Started
             </Link>
@@ -68,6 +69,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+
       {isMenuOpen && (
         <motion.div
           className="md:hidden"
@@ -76,15 +78,13 @@ const Header = () => {
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <MobileNavLink href="/about">About</MobileNavLink>
-            <MobileNavLink href="/pricing">Pricing</MobileNavLink>
-            <MobileNavLink href="/contact">Contact</MobileNavLink>
-            <MobileNavLink href="/login">Login</MobileNavLink>
-            <Link
-              href="/get-started"
-              className="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-primary/90"
-            >
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
+            <MobileNavLink setIsMenuOpen={setIsMenuOpen} href="/">Home</MobileNavLink>
+            <MobileNavLink setIsMenuOpen={setIsMenuOpen} href="/about">About</MobileNavLink>
+            <MobileNavLink setIsMenuOpen={setIsMenuOpen} href="/pricing">Pricing</MobileNavLink>
+            <MobileNavLink setIsMenuOpen={setIsMenuOpen} href="/contact">Contact</MobileNavLink>
+            <MobileNavLink setIsMenuOpen={setIsMenuOpen} href="/login">Login</MobileNavLink>
+            <Link onClick={() => {setIsMenuOpen(false)}} href="/get-started" className="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-primary/90">
               Get Started
             </Link>
           </div>
@@ -94,16 +94,17 @@ const Header = () => {
   )
 }
 
-const NavLink = ({ href, children }) => (
+const NavLink = ({ href, children }: any) => (
   <Link href={href} className="text-gray-600 hover:text-primary transition-colors duration-300 relative group">
     {children}
     <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
   </Link>
 )
 
-const MobileNavLink = ({ href, children }) => (
+const MobileNavLink = ({ href, children, setIsMenuOpen }: any) => (
   <Link
     href={href}
+    onClick={() => {setIsMenuOpen(false)}}
     className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50"
   >
     {children}
@@ -111,4 +112,3 @@ const MobileNavLink = ({ href, children }) => (
 )
 
 export default Header
-

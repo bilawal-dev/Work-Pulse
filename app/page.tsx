@@ -25,7 +25,7 @@ export default function Home() {
             <div className="space-x-4">
               <Link
                 href="/get-started"
-                className="inline-block bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105"
+                className="inline-block bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary/90 transition-all duration-300 transform"
               >
                 Get Started for Free
               </Link>
@@ -67,17 +67,17 @@ export default function Home() {
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <FeatureItem
-              icon={<Activity className="w-12 h-12 text-primary" />}
+              icon={<Activity className="w-12 h-12 text-white" />}
               title="Real-time Health Tracking"
               description="Monitor vital health metrics and receive instant insights to improve overall well-being."
             />
             <FeatureItem
-              icon={<Brain className="w-12 h-12 text-primary" />}
+              icon={<Brain className="w-12 h-12 text-white" />}
               title="AI-Powered Recommendations"
               description="Get personalized wellness programs tailored to individual needs and goals."
             />
             <FeatureItem
-              icon={<Heart className="w-12 h-12 text-primary" />}
+              icon={<Heart className="w-12 h-12 text-white" />}
               title="Work-Life Balance"
               description="Foster a healthy balance between professional and personal life with smart scheduling."
             />
@@ -121,37 +121,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            What Our Clients Say
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <TestimonialCard
-              quote="WorkPulse has transformed our company culture. Our employees are happier and more productive than ever."
-              author="Jane Doe"
-              position="CEO of TechCorp"
-            />
-            <TestimonialCard
-              quote="The AI-driven insights have been a game-changer for our wellness program. Highly recommended!"
-              author="John Smith"
-              position="HR Director at InnovateCo"
-            />
-            <TestimonialCard
-              quote="WorkPulse's user-friendly interface makes it easy for all our employees to engage with their wellness journey."
-              author="Emily Brown"
-              position="Wellness Coordinator at HealthFirst"
-            />
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-primary text-white">
         <div className="max-w-7xl mx-auto text-center">
@@ -185,6 +154,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      
     </div>
   )
 }
@@ -214,26 +184,5 @@ const TimelineItem = ({ number, title, description }: any) => (
     </div>
     <h3 className="text-2xl font-semibold mb-4">{title}</h3>
     <p className="text-gray-600">{description}</p>
-  </motion.div>
-)
-
-const TestimonialCard = ({ quote, author, position }: any) => (
-  <motion.div
-    className="bg-white rounded-lg p-6 shadow-lg"
-    initial={{ opacity: 0, y: 20 }}
-    animate={{
-      opacity: 1,
-      y: 0,
-    }}
-    transition={{ duration: 0.5 }}
-  >
-    <p className="text-gray-600 mb-4 italic">"{quote}"</p>
-    <div className="flex items-center">
-      <div className="w-12 h-12 bg-primary rounded-full mr-4"></div>
-      <div>
-        <p className="font-semibold">{author}</p>
-        <p className="text-sm text-gray-500">{position}</p>
-      </div>
-    </div>
   </motion.div>
 )
