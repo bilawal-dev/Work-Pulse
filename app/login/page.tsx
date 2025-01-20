@@ -3,14 +3,12 @@
 import { useState } from "react"
 import Link from "next/link"
 import toast, { Toaster } from "react-hot-toast"
-import { useRouter } from "next/navigation"
 
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
 
-  const router = useRouter()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -18,11 +16,10 @@ export default function Login() {
     setLoading(true)
 
     setTimeout(() => {
-      toast.success("Successfully Login")
+      toast.error("Failed To Login")
     }, 1000)
 
     setTimeout(() => {
-      router.push("/")
       setEmail("")
       setPassword("")
       setLoading(false)

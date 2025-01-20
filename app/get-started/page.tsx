@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import toast, { Toaster } from "react-hot-toast"
+import { useRouter } from "next/navigation"
 
 export default function GetStarted() {
   const [formData, setFormData] = useState({
@@ -19,13 +20,15 @@ export default function GetStarted() {
     setFormData((prevState) => ({ ...prevState, [name]: value }))
   }
 
+  const router = useRouter()
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
 
     // Simulate registration logic
     setTimeout(() => {
-      toast.error("Failed To Create Account");
+      toast.success("Account Created Successfully");
       setLoading(false)
       setFormData({
         name: "",
@@ -34,7 +37,11 @@ export default function GetStarted() {
         companyName: "",
         employeeCount: "",
       })
-    }, 2000)  // Simulating a delay for registration
+    }, 1500)  // Simulating a delay for registration
+
+    setTimeout(() => {
+      router.push('/');
+    }, 2500)
   }
 
   return (
